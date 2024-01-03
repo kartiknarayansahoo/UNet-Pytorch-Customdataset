@@ -2,13 +2,18 @@ from PIL import Image
 import os
 import sys
 import numpy as np
+from tqdm import tqdm
 
 
 def binarize_images(input_dir, output_dir):
-    # loop through all files in the directory
-    for file_name in os.listdir(input_dir):
+    # Get the total number of files for the progress bar
+    total_files = len([f for f in os.listdir(input_dir)
+                      if f.endswith((".jpg", ".jpeg", ".png"))])
+
+    # loop through all files in the directory with tqdm
+    for file_name in tqdm(os.listdir(input_dir), total=total_files, desc="Binarizing images"):
         # check if the file is an image
-        if file_name.endswith(".jpg") or file_name.endswith(".jpeg") or file_name.endswith(".png"):
+        if file_name.endswith((".jpg", ".jpeg", ".png")):
             # open the image file and binarize it
             with Image.open(os.path.join(input_dir, file_name)) as img:
                 # Convert Image to Numpy as array
@@ -49,6 +54,6 @@ if __name__ == "__main__":
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    # Binarize images
+    # Binarize images with progress bar
     binarize_images(input_dir, output_dir)
     print("Images binarized successfully.")

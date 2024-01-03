@@ -1,13 +1,18 @@
 from PIL import Image
 import os
 import sys
+from tqdm import tqdm
 
 
 def resize_images(input_dir, output_dir, new_size):
-    # loop through all files in the directory
-    for file_name in os.listdir(input_dir):
+    # Get the total number of files for the progress bar
+    total_files = len([f for f in os.listdir(input_dir)
+                      if f.endswith((".jpg", ".jpeg", ".png"))])
+
+    # loop through all files in the directory with tqdm
+    for file_name in tqdm(os.listdir(input_dir), total=total_files, desc="Resizing images"):
         # check if the file is an image
-        if file_name.endswith(".jpg") or file_name.endswith(".jpeg") or file_name.endswith(".png"):
+        if file_name.endswith((".jpg", ".jpeg", ".png")):
             # open the image file and resize it
             with Image.open(os.path.join(input_dir, file_name)) as img:
                 img = img.resize(new_size)
@@ -23,8 +28,7 @@ def resize_images(input_dir, output_dir, new_size):
 if __name__ == "__main__":
     # Check if the correct number of command-line arguments is provided
     if len(sys.argv) != 5:
-        print(
-            "Usage: python resize_and_img_format.py <input_directory> <output_directory> <width> <height>")
+        print("Usage: python resize_and_img_format.py <input_directory> <output_directory> <width> <height>")
         sys.exit(1)
 
     # Parse command-line arguments
@@ -49,6 +53,6 @@ if __name__ == "__main__":
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    # Resize images
+    # Resize images with progress bar
     resize_images(input_dir, output_dir, new_size)
     print("Images resized successfully.")
