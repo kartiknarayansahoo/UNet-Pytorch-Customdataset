@@ -18,7 +18,7 @@ def binarize_images(input_dir, output_dir):
             with Image.open(os.path.join(input_dir, file_name)) as img:
                 # Convert Image to Numpy as array
                 img_array = np.array(img)
-                print(img_array.shape)
+                # print(img_array.shape)
                 # Put threshold to make it binary
                 binarr = img_array
                 binarr[binarr >= 128] = 255
