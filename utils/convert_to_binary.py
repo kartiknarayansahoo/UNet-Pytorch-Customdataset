@@ -26,13 +26,19 @@ def binarize_images(input_dir, output_dir):
 
 if __name__ == "__main__":
     # Check if the correct number of command-line arguments is provided
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
         print("Usage: python convert_to_binary.py <input_directory> <output_directory>")
         sys.exit(1)
 
     # Parse command-line arguments
+    script_path = sys.argv[0]
     input_dir = sys.argv[1]
     output_dir = sys.argv[2]
+
+    # Check if the script path is valid
+    if not os.path.exists(script_path):
+        print(f"Error: Script path '{script_path}' does not exist.")
+        sys.exit(1)
 
     # Check if the input directory exists
     if not os.path.exists(input_dir):
