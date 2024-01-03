@@ -19,8 +19,8 @@ from unet import UNet
 from utils.data_loading import BasicDataset
 from utils.dice_score import dice_loss
 
-dir_img = Path('/kaggle/input/unet-1000-pneumothorax/dataset_1024_1000/train')
-dir_mask = Path('/kaggle/input/unet-1000-pneumothorax/dataset_1024_1000/mask')
+dir_img = Path('/kaggle/input/unet-1000-pneumothorax/data/imgs')
+dir_mask = Path('/kaggle/input/unet-1000-pneumothorax/data/masks')
 dir_checkpoint = Path('./checkpoints/')
 
 
