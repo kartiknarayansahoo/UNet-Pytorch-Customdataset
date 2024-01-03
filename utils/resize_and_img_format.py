@@ -24,7 +24,7 @@ if __name__ == "__main__":
     # Check if the correct number of command-line arguments is provided
     if len(sys.argv) != 4:
         print(
-            "Usage: python script.py <input_directory> <output_directory> <width> <height>")
+            "Usage: python resize_and_img_format.py <input_directory> <output_directory> <width> <height>")
         sys.exit(1)
 
     # Parse command-line arguments

@@ -27,6 +27,12 @@ I have used all the offline dataset preprocessing for this [kaggle dataset](http
 - data.zip holds the preprocessed images
 - ```unzip data.zip```
 
+**Resizing image**
+- ```python resize_and_img_format.py <input_directory> <output_directory> <width> <height>```
+
+**Converting masks to binary**
+- ```python convert_to_binary.py <input_directory> <output_directory>```
+
 **Installation**
 
 - ```pip install -r requirements```
