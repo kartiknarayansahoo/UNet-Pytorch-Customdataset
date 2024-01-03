@@ -19,8 +19,8 @@ from unet import UNet
 from utils.data_loading import BasicDataset
 from utils.dice_score import dice_loss
 
-dir_img = Path('/kaggle/input/pneumothorax-200-png/dataset_1024_1000/train')
-dir_mask = Path('/kaggle/input/pneumothorax-200-png/dataset_1024_1000/mask')
+dir_img = Path('/kaggle/input/unet-1000-pneumothorax/dataset_1024_1000/train')
+dir_mask = Path('/kaggle/input/unet-1000-pneumothorax/dataset_1024_1000/mask')
 dir_checkpoint = Path('./checkpoints/')
 
 
@@ -35,7 +35,7 @@ def train_model(
         img_scale: float = 0.5,
         amp: bool = False,
         weight_decay: float = 1e-8,
-        momentum: float = 0.999,    
+        momentum: float = 0.999,
         gradient_clipping: float = 1.0,
 ):
     # 1. Create dataset
