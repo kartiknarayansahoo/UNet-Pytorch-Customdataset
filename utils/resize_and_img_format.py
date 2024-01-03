@@ -17,7 +17,7 @@ def resize_images(input_dir, output_dir, new_size):
             with Image.open(os.path.join(input_dir, file_name)) as img:
                 img = img.resize(new_size)
                 # save the resized image with a new file name
-                new_file_name = "resized_" + file_name
+                new_file_name = file_name
                 if img.mode == 'P':
                     img = img.convert('RGB')
                 if img.mode == 'RGBA':
