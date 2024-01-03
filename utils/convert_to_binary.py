@@ -31,7 +31,7 @@ def binarize_images(input_dir, output_dir):
 
 if __name__ == "__main__":
     # Check if the correct number of command-line arguments is provided
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 3:
         print("Usage: python convert_to_binary.py <input_directory> <output_directory>")
         sys.exit(1)
 
